@@ -1,0 +1,11 @@
+.reveal div.slides {}
+.reveal div.slides section { bottom: 0; }
+
+.reveal img.no-frame { border: none; background: none; box-shadow: none; }
+.reveal img.no-frame {
+  max-height: 70%;
+  display: block;
+}
+
+
+.reveal a { color: white; }

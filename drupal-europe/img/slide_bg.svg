@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="svg74"
+   stroke-miterlimit="10"
+   stroke-linecap="square"
+   stroke="none"
+   fill="none"
+   viewBox="0.0 0.0 960.0 540.0"
+   version="1.1">
+  <metadata
+     id="metadata80">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs78">
+    <defs
+       id="defs12">
+      <linearGradient
+         id="g3ea5d717bc_0_0.1"
+         gradientUnits="userSpaceOnUse"
+         gradientTransform="scale(30.983867)"
+         spreadMethod="pad"
+         x1="0.0"
+         y1="0.4523563225885303"
+         x2="30.983866769659333"
+         y2="0.4523563225885303">
+        <stop
+           offset="0.0"
+           stop-color="#6d9eeb"
+           id="stop7" />
+        <stop
+           offset="1.0"
+           stop-color="#c200c2"
+           id="stop9" />
+      </linearGradient>
+    </defs>
+    <defs
+       id="defs21">
+      <linearGradient
+         id="g3ea5d717bc_0_0.2"
+         gradientUnits="userSpaceOnUse"
+         gradientTransform="scale(30.983867)"
+         spreadMethod="pad"
+         x1="0.0"
+         y1="17.427916792402378"
+         x2="30.983866769659333"
+         y2="17.427916792402378">
+        <stop
+           offset="0.0"
+           stop-color="#6d9eeb"
+           id="stop16" />
+        <stop
+           offset="1.0"
+           stop-color="#c200c2"
+           id="stop18" />
+      </linearGradient>
+    </defs>
+    <defs
+       id="defs39">
+      <linearGradient
+         id="g3ea5d717bc_0_0.4"
+         gradientUnits="userSpaceOnUse"
+         gradientTransform="scale(19.281585)"
+         spreadMethod="pad"
+         x1="20.532936393501775"
+         y1="11.976327146640765"
+         x2="39.81452158660909"
+         y2="11.976327146640765">
+        <stop
+           offset="0.0"
+           stop-color="#6d9eeb"
+           id="stop34" />
+        <stop
+           offset="1.0"
+           stop-color="#c200c2"
+           id="stop36" />
+      </linearGradient>
+    </defs>
+  </defs>
+  <clipPath
+     id="g3ea5d717bc_0_0.0">
+    <path
+       id="path2"
+       clip-rule="nonzero"
+       d="m0 0l960.0 0l0 540.0l-960.0 0l0 -540.0z" />
+  </clipPath>
+  <path
+     d="M 0,0 H 960 V 540 H 0 Z"
+     id="path5"
+     style="fill:#ffffff;fill-rule:evenodd" />
+  <path
+     d="M 0,0 H 960 V 14.015748 H 0 Z"
+     id="path14"
+     style="fill:url(#g3ea5d717bc_0_0.1);fill-rule:evenodd" />
+  <path
+     d="m 0,521.6221 h 960 v 18.36218 H 0 Z"
+     id="path23"
+     style="fill:url(#g3ea5d717bc_0_0.2);fill-rule:evenodd" />
+  <path
+     d="M 822.87665,24.026247 H 937.91864 V 139.7244 H 822.87665 Z"
+     id="path25"
+     style="fill:#000000;fill-opacity:0;fill-rule:evenodd" />
+  <path
+     d="m 385.47125,175.77925 h 570.6457 v 55.14961 h -570.6457 z"
+     id="path43"
+     style="fill:#000000;fill-opacity:0;fill-rule:evenodd" />
+  <path
+     d="m 387.823,236.71617 h 506.74017 v 33.25984 H 387.823 Z"
+     id="path47"
+     style="fill:#000000;fill-opacity:0;fill-rule:evenodd" />
+  <path
+     d="m 431.22174,279.809 h 506.74017 v 33.25986 H 431.22174 Z"
+     id="path55"
+     style="fill:#000000;fill-opacity:0;fill-rule:evenodd" />
+  <path
+     d="m -208.69817,205.52493 h 453.35434 v 97.98425 h -453.35434 z"
+     id="path59"
+     style="fill:#000000;fill-opacity:0;fill-rule:evenodd" />
+  <path
+     d="m 397.9608,287.51968 h 33.25983 v 33.25986 H 397.9608 Z"
+     id="path63"
+     style="fill:#000000;fill-opacity:0;fill-rule:evenodd" />
+</svg>
