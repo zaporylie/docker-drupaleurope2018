@@ -26,12 +26,48 @@
 		<div class="reveal">
 			<div class="slides">
 				<!-- Front slide -->
-				<section data-background="drupal-europe/img/Header_03_bg.jpg">
-					<img data-src="drupal-europe/img/DrupalEurope_Logo_white_vertical.png" class="no-frame">
+				<section class="front">
+					<img data-src="drupal-europe/img/logo-white.png" class="no-frame">
 					<a href="https://www.drupaleurope.org">www.drupaleurope.org</a>
 				</section>
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<!-- Session title -->
+				<section class="title">
+					<h1>Main title</h1>
+					<h2>Subtitle</h2>
+					<aside class="public-notes">Track name and URL here & anything else</aside>
+					<aside class="notes">Speaker notes</aside>
+				</section>
+				<!-- Speakers -->
+				<section class="speakers">
+					<div class="speaker">
+						<img src="" class="speaker">
+						<h2>Name</h2>
+						<div class="role">Role</div>
+						<div class="twitter">twitter handler</div>
+					</div>
+					<div class="speaker">
+						<img src="" class="speaker">
+						<h2>Name</h2>
+						<div class="role">Role</div>
+						<div class="twitter">twitter handler</div>
+					</div>
+				</section>
+				<!-- Section -->
+				<section class="section">
+					<h1>Title</h1>
+					<h2>Subtitle</h2>
+				</section>
+				<!-- Regular slide -->
+				<section class="slide">
+					<h1>Title</h1>
+					<h2>SubTitle</h2>
+					Lorem ipsum dolor.
+				</section>
+				<!-- Quote -->
+				<section class="quote">
+					<blockquote>Lorem ipsum dolor</blockquote>
+					<small class="author">Dries</small>
+				</section>
 			</div>
 		</div>
 
@@ -44,6 +80,7 @@
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+				history: true,
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },

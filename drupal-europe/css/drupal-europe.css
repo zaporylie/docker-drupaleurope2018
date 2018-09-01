@@ -1,11 +1,184 @@
-.reveal div.slides {}
-.reveal div.slides section { bottom: 0; }
-
-.reveal img.no-frame { border: none; background: none; box-shadow: none; }
-.reveal img.no-frame {
-  max-height: 70%;
-  display: block;
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&subset=latin-ext');
+body .reveal {
+  font-family: "Open Sans", sans-serif;
+  font-size: 36px;
+}
+@font-face{
+  font-family: Nexa;
+  src: url('../fonts/Nexa/NexaBold.eot');
+  src: local('Nexa Bold'), local('NexaBold'),
+    url('../fonts/Nexa/NexaBold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Nexa/NexaBold.woff2') format('woff2'),
+    url('../fonts/Nexa/NexaBold.woff') format('woff'),
+    url('../fonts/Nexa/NexaBold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: Nexa;
+  src: url('../fonts/Nexa/NexaLight.eot');
+  src: local('Nexa Light'), local('NexaLight'),
+  url('../fonts/Nexa/NexaLight.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/Nexa/NexaLight.woff2') format('woff2'),
+  url('../fonts/Nexa/NexaLight.woff') format('woff'),
+  url('../fonts/Nexa/NexaLight.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
 }
 
+/*Backgrounds*/
+.reveal .slide-background .slide-background-content {
+  box-sizing: border-box;
+}
+.reveal .slide-background .slide-background-content:before,
+.reveal .slide-background .slide-background-content:after {
+  content: '';
+  background: linear-gradient(90deg,#33a8e5,#374d9c,#ab2d92);
+  width: 100%;
+  height: 2rem;
+  display: block;
+  position: absolute;
+}
+.reveal .slide-background .slide-background-content:before { top: 0; }
+.reveal .slide-background .slide-background-content:after { bottom: 0; }
+.reveal .slide-background.front .slide-background-content {
+  background-image: url("../img/Header_03_bg.jpg");
+  border: none;
+}
+.reveal .slide-background.front .slide-background-content:before,
+.reveal .slide-background.front .slide-background-content:after { display: none;}
+.reveal .slide-background.section .slide-background-content { background: linear-gradient(90deg,#33a8e5,#374d9c,#ab2d92); }
+.reveal .slide-background.quote .slide-background-content { background: linear-gradient(90deg,#33a8e5,#374d9c,#ab2d92); }
 
-.reveal a { color: white; }
+/*Slide templates*/
+.reveal div.slides {}
+.reveal div.slides section:before {
+  content: '';
+  display: block;
+  float: right;
+  width: 100%;
+  height: 120px;
+  background-image: url("../img/logo-color.png");
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-size: auto 120px;
+  margin-bottom: 1rem;
+}
+.reveal div.slides section { text-align: left;}
+.reveal div.slides section { bottom: 0; }
+.reveal div.slides section aside.public-notes {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 1em;
+  font-size: .9em;
+}
+
+.reveal div.slides section.front {}
+.reveal div.slides section.front:before { display: none; }
+.reveal div.slides section.front img {
+  max-height: 80%;
+  display: block;
+  border: none;
+  background: none;
+  box-shadow: none;
+}
+.reveal div.slides section.front a { color: white; position: absolute; bottom: 1rem; margin-left: 12%; }
+
+.reveal div.slides section.title { text-align: center; }
+.reveal div.slides section.title h1 {
+  border-width: 6px 0 0 0;
+  border-image-source: url(../img/gradient.svg);
+  border-image-width: 0 0 6px;
+  border-image-slice: 1;
+  border-style: solid;
+  font-family: "Nexa", "Open Sans", sans-serif;
+}
+.reveal div.slides section.title h2 { color: #b157c5; font-weight: 300; }
+
+.reveal div.slides section.speakers {
+  font-family: "Nexa", "Open Sans", sans-serif;
+}
+.reveal div.slides section.speakers .speaker { clear: both; }
+.reveal div.slides section.speakers img.speaker {
+  float: left;
+  width: 14rem;
+  height: 14rem;
+  overflow: hidden;
+  border-radius: 14rem;
+  border-color: #ab2d92;
+  background-color: #eeeeee;
+}
+.reveal div.slides section.speakers h2 {
+  border-width: 4px 0 0 0;
+  border-image-source: url(../img/gradient.svg);
+  border-image-width: 0 0 4px;
+  border-image-slice: 1;
+  border-style: solid;
+  margin-left: 16rem;
+  font-family: inherit;
+}
+.reveal div.slides section.speakers div.role { margin-left: 16rem; color: #ab2d92; }
+.reveal div.slides section.speakers div.twitter { margin-left: 16rem; padding-left: 40px; background-image: url("../img/twitter.png"); background-position: center left; background-repeat: no-repeat; background-size: 32px; }
+
+.reveal div.slides section.section { text-align: center; color: white; }
+.reveal div.slides section.section:before {
+  background-image: url("../img/logo-white.png");
+}
+.reveal div.slides section.section h1 {
+  color: inherit;
+  border-bottom: 2px solid white;
+  font-family: "Nexa", "Open Sans", sans-serif;
+  clear: both;
+}
+.reveal div.slides section.section h2 {
+  color: inherit;
+  font-weight: 300;
+}
+
+.reveal div.slides section.quote { color: white; }
+.reveal div.slides section.quote:before {
+  background-image: url("../img/logo-white.png");
+}
+.reveal div.slides section.quote blockquote {
+  border: none;
+  background: none;
+  box-shadow: none;
+  margin: 0;
+  font-family: "Nexa", "Open Sans", sans-serif;
+  font-weight: bold;
+  padding: 2rem;
+  font-size: 1.5em;
+  font-style: normal;
+  position: absolute;
+  bottom: 5rem;
+}
+.reveal div.slides section.quote blockquote:before { font-family: serif; position: absolute; top: 0; left: 0; content:'\201C'; font-size: 1.5em; line-height: 1em; }
+.reveal div.slides section.quote blockquote:after { font-family: serif; position: absolute; bottom: 0; right: 0; content:'\201D'; font-size: 1.5em; line-height: 1em; }
+.reveal div.slides section.quote small.author { font-size: 1em; margin-left: 2rem; position: absolute; bottom: 2rem; }
+
+.reveal div.slides section.slide {}
+.reveal div.slides section.slide:before {
+  float: right;
+  width: 120px;
+}
+.reveal div.slides section.slide h1 {
+  font-size: 3rem;
+  border-width: 4px 0 0 0;
+  border-image-source: url(../img/gradient.svg);
+  border-image-width: 0 0 4px;
+  border-image-slice: 1;
+  border-style: solid;
+  font-family: "Nexa", "Open Sans", sans-serif;
+  margin-right: 220px;
+  margin-bottom: 10px;
+}
+.reveal div.slides section.slide h2 { font-size: 1.5rem; color: #b157c5; }
+
+.reveal img.no-frame { border: none; background: none; box-shadow: none; }
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+  text-transform: none;
+  font-family: "Open Sans", sans-serif;
+}
+
