@@ -73,6 +73,9 @@ body .reveal {
   margin-bottom: 1em;
   font-size: .9em;
 }
+.reveal div.slides section pre {
+  clear: both;
+}
 
 .reveal div.slides section.front {}
 .reveal div.slides section.front:before { display: none; }
