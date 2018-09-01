@@ -55,7 +55,6 @@ body .reveal {
 .reveal div.slides section:before {
   content: '';
   display: block;
-  float: right;
   width: 100%;
   height: 120px;
   background-image: url("../img/logo-color.png");
@@ -91,7 +90,7 @@ body .reveal {
   border-width: 6px 0 0 0;
   border-image-source: url(../img/gradient.svg);
   border-image-width: 0 0 6px;
-  border-image-slice: 1;
+  border-image-slice: 100;
   border-style: solid;
   font-family: "Nexa", "Open Sans", sans-serif;
 }
@@ -114,7 +113,7 @@ body .reveal {
   border-width: 4px 0 0 0;
   border-image-source: url(../img/gradient.svg);
   border-image-width: 0 0 4px;
-  border-image-slice: 1;
+  border-image-slice: 100;
   border-style: solid;
   margin-left: 16rem;
   font-family: inherit;
@@ -151,12 +150,11 @@ body .reveal {
   padding: 2rem;
   font-size: 1.5em;
   font-style: normal;
-  position: absolute;
-  bottom: 5rem;
+  margin-top: 2rem;
 }
 .reveal div.slides section.quote blockquote:before { font-family: serif; position: absolute; top: 0; left: 0; content:'\201C'; font-size: 1.5em; line-height: 1em; }
 .reveal div.slides section.quote blockquote:after { font-family: serif; position: absolute; bottom: 0; right: 0; content:'\201D'; font-size: 1.5em; line-height: 1em; }
-.reveal div.slides section.quote small.author { font-size: 1em; margin-left: 2rem; position: absolute; bottom: 2rem; }
+.reveal div.slides section.quote small.author { font-size: 1em; margin-left: 2rem; }
 
 .reveal div.slides section.slide {}
 .reveal div.slides section.slide:before {
@@ -168,7 +166,7 @@ body .reveal {
   border-width: 4px 0 0 0;
   border-image-source: url(../img/gradient.svg);
   border-image-width: 0 0 4px;
-  border-image-slice: 1;
+  border-image-slice: 100;
   border-style: solid;
   font-family: "Nexa", "Open Sans", sans-serif;
   margin-right: 220px;
