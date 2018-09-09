@@ -38,84 +38,266 @@
 						Track supported by
 						<img src="drupal-europe/img/sponsors/ddev.png">
 					</section>
-					<section class="sponsor">
-						<div class="track"><img src="drupal-europe/img/tracks/digital_transformation.png">Digital Transformation + Enterprise</div>
-						Track supported by
-						<img src="drupal-europe/img/sponsors/acquia.png">
-					</section>
-					<section class="sponsor">
-						<div class="track"><img src="drupal-europe/img/tracks/infrastructure.png">Drupal + Technology</div>
-						Track supported by
-						<img src="drupal-europe/img/sponsors/platformsh.png">
-					</section>
-					<section class="sponsor">
-						<div class="track"><img src="drupal-europe/img/tracks/government.png">Government</div>
-						Track supported by
-						<img src="drupal-europe/img/sponsors/degov.png">
-					</section>
 				</section>
 
 				<!-- Session title -->
 				<section class="title">
-					<h1>Main title</h1>
-					<h2>Subtitle</h2>
-					<aside class="public-notes">Track name and URL here & anything else</aside>
+					<h1>Modular software, modular infrastructure</h1>
+					<h2>Jakub Piasecki</h2>
+					<aside class="public-notes">https://zaporylie.github.io/docker-drupaleurope2018/</aside>
 					<aside class="notes">Speaker notes</aside>
 				</section>
 				<!-- Speakers -->
-				<section class="speakers">
-					<div class="speaker">
-						<img src="" class="speaker">
-						<h2>Name</h2>
-						<div class="role">Role</div>
-						<div class="twitter">twitter handler</div>
-					</div>
-					<div class="speaker">
-						<img src="" class="speaker">
-						<h2>Name</h2>
-						<div class="role">Role</div>
-						<div class="twitter">twitter handler</div>
-					</div>
+				<section>
+					<section class="speakers">
+						<div class="speaker">
+							<img src="drupal-europe/img/jakub.gif" class="speaker">
+							<h2>Jakub Piasecki</h2>
+							<div class="twitter">zaporylie</div>
+							<div class="role">Drupal CTO @linkfactory</div>
+							<div class="role fragment">traveller</div>
+							<div class="role fragment">drupal contributor</div>
+							<div class="role fragment">drupaldocker.org founder</div>
+						</div>
+						<aside class="notes">
+							Since march working for Linkfactory. Big thanks to Linkfactory for sponsoring my trip jere and opportunity
+							to give this talk.
+							Been drupal-docker lead for last 3 years.
+							Been around Drupal for over 7 years.
+						</aside>
+					</section>
 				</section>
-				<!-- Section -->
-				<section class="section">
-					<h1>Title</h1>
-					<h2>Subtitle</h2>
+				<section>
+					<section class="slide">
+						<h1>What is this session about</h1>
+						<ul>
+							<li>Infrastructure as a code</li>
+							<li>Infrastructure's modularity</li>
+							<li>Best practices</li>
+							<li>Brainstorming</li>
+						</ul>
+					</section>
+					<section class="slide">
+						<h1>What is this session NOT about</h1>
+						<ul>
+							<li>Giving simple recipes</li>
+							<li>Running Docker on production :)</li>
+						</ul>
+					</section>
+					<section class="slide">
+						<h1>Glossary</h1>
+						<ul>
+							<li>Application</li>
+							<li>Infrastructure</li>
+							<li>Project</li>
+						</ul>
+						<aside class="notes">
+							Whenever I say "application" I mean some piece of code you create for your client, could be Symfony app, Wordpress site, console script or Drupal website.
+							Whenever I say "infrastructure" I mean an environment application is running at - an example could be Ubuntu server, with PHP7, MariaDB database, Nginx http server.
+							"Project" is application and infrastructure together.
+						</aside>
+					</section>
 				</section>
-				<!-- Quote -->
-				<section class="quote">
-					<blockquote>Lorem ipsum dolor</blockquote>
-					<small class="author">Dries</small>
+				<section>
+					<section class="slide">
+						<img src="drupal-europe/img/diagram.png" class="no-frame">
+					</section>
+					<section class="quote">
+						<blockquote>Application heavily depends on the infrastructure, <span class="fragment">therefore
+				  infrastructure must be considered a part of the project.</span></blockquote>
+						<aside class="notes">
+							Bold statement, I know, but it's basically TRUE. Your application depends on the list of services, such as
+							PHP in certain version, nginx configuration, mysql/postgres, etc.
+						</aside>
+					</section>
+					<section class="section">
+						<h1>Infrastructure <span style="text-decoration: line-through">as</span> is a Code.</h1>
+						<h2 class="fragment">It must follow basic coding principles.</h2>
+						<aside class="notes">
+							Yes yes yes. Sure you could "compile" image into .iso file or similar format. But what's the point? You
+							could compile your application (create artifact of application state) into the same .iso  file every time
+							you commit to the repo. So better to keep your infrastructure in human readable format - the code.
+						</aside>
+					</section>
+					<section class="slide">
+						<h1>What can you use?</h1>
+						<ul>
+							<li class="fragment">Vagrantfile</li>
+							<li class="fragment">Ansible</li>
+							<li class="fragment">Terraform</li>
+							<li class="fragment">Docker</li>
+							<li class="fragment">more...</li>
+						</ul>
+						<aside class="notes">
+							There is already multiple formats that allows you to provision infrastructure from text file. Just to name few (list).
+							We are developers. We love new hipster stuff. Lets go hipster...
+						</aside>
+					</section>
+					<section data-background="drupal-europe/img/whale.jpg">
+						<aside class="notes">
+							For further divagation let's choose Docker. Oh, yet another time someone talks about Docker. That's boring.
+							I would like to try another approach on the way we look at Docker. Rather than say how to use Docker in
+							your project let's take step back and thing of Docker as a code - can we, as a developers, apply same rules/principles
+							we apply for our applications.
+						</aside>
+					</section>
 				</section>
-				<!-- Regular slide -->
 				<section class="slide">
-					<h1>Title</h1>
-					<h2>SubTitle</h2>
-					Lorem ipsum dolor.
-				</section>
-				<!-- Regular list slide -->
-				<section class="slide">
-					<h1>Title</h1>
-					<h2>SubTitle</h2>
-					<ul>
-						<li>List item 1</li>
-						<li>List item 2</li>
-						<li>List item 3</li>
-						<li>List item 4</li>
-					</ul>
-				</section>
-				<!-- Regular slide -->
-				<section class="slide">
-					<h1>Title</h1>
-					<h2>SubTitle</h2>
-					<pre><code>
-{
-    "name": "drupal/core",
-    "description": "Drupal is an open source content management platform powering millions of websites and applications.",
-    "type": "drupal-core",
-    "license": "GPL-2.0-or-later"
-}
+					<h1>Dockerfile</h1>
+					<pre><code data-trim data-noescape>
+FROM php:7.0-fpm-alpine
+MAINTAINER drupal-docker
+
+RUN apk add --no-cache --virtual .dd-build-deps libpng-dev libjpeg-turbo-dev postgresql-dev libxml2-dev $PHPIZE_DEPS \
+	&& docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
+	&& docker-php-ext-install gd mbstring pdo_mysql pdo_pgsql zip \
+	&& docker-php-ext-install opcache bcmath soap \
+	&& pecl install redis-3.1.1 \
+	&& docker-php-ext-enable redis \
+	&& apk add --no-cache libpng libjpeg libpq libxml2 \
+	&& apk del .dd-build-deps
+
+COPY drupal-*.ini /usr/local/etc/php/conf.d/
 					</code></pre>
+					<aside class="notes">
+						It does look like code, doesn't it? It has Instructions, some very common linux commands, it even can be
+						compiled (docker build ...).
+					</aside>
+				</section>
+				<!--Principles-->
+				<section>
+					<section class="section">
+						<h1>Does Docker follow programming principles?</h1>
+						<h2 class="fragment">Let's find out together</h2>
+						<aside class="notes">
+							Ok, so let's ask ourselves the one, very important question.
+							Subtitle: Is Docker a programming (infrastructure) language?
+						</aside>
+					</section>
+					<section class="section">
+						<h1>DRY</h1>
+						<h2 class="fragment">Do not repeat yourself</h2>
+					</section>
+					<section class="slide">
+						<h1>DRY</h1>
+						<h2>Dockerfile</h2>
+						<pre><code data-trim data-noescape>
+FROM php:7.0-fpm-alpine
+MAINTAINER drupal-docker
+
+RUN apk add --no-cache --virtual .dd-build-deps libpng-dev libjpeg-turbo-dev postgresql-dev libxml2-dev $PHPIZE_DEPS \
+	&& docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
+	&& docker-php-ext-install gd mbstring pdo_mysql pdo_pgsql zip \
+	&& docker-php-ext-install opcache bcmath soap \
+	&& pecl install redis-3.1.1 \
+	&& docker-php-ext-enable redis \
+	&& apk add --no-cache libpng libjpeg libpq libxml2 \
+	&& apk del .dd-build-deps
+
+COPY drupal-*.ini /usr/local/etc/php/conf.d/
+            			</code></pre>
+						<aside class="notes">
+							How Docker can be DRY-compatible? FROM - Inheritance, ADD/COPY - Composition
+						</aside>
+					</section>
+					<section class="section">
+						<h1>KISS</h1>
+						<h2 class="fragment">Keep it simple stupid</h2>
+					</section>
+					<section class="slide">
+						<h1>KISS</h1>
+						<h2>Dockerfile</h2>
+						<pre><code data-trim data-noescape>
+FROM drupaldocker/php:7.0-fpm-2.x
+MAINTAINER drupal-docker
+
+RUN apk add --no-cache --virtual .dd-build-deps $PHPIZE_DEPS \
+&& pecl install xdebug-2.6.0beta1 \
+&& docker-php-ext-enable xdebug \
+&& apk del .dd-build-deps
+
+COPY drupal-*.ini /usr/local/etc/php/conf.d/
+            			</code></pre>
+						<aside class="notes">
+							just 7 lines 4 instructions 3 effective instructions easy ro read and write
+						</aside>
+					</section>
+					<section class="section">
+						<h1>YAGNI</h1>
+						<h2 class="fragment">You ain't gonna need it</h2>
+					</section>
+					<section class="slide">
+						<h1>YAGNI</h1>
+						<h2>Dockerfile</h2>
+						<pre><code data-trim data-noescape>
+FROM php:7.0-fpm-alpine
+MAINTAINER drupal-docker
+
+RUN apk add --no-cache --virtual .dd-build-deps libpng-dev libjpeg-turbo-dev postgresql-dev libxml2-dev $PHPIZE_DEPS \
+&& docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
+&& docker-php-ext-install gd mbstring pdo_mysql pdo_pgsql zip \
+&& docker-php-ext-install opcache bcmath soap \
+&& pecl install redis-3.1.1 \
+&& docker-php-ext-enable redis \
+&& apk add --no-cache libpng libjpeg libpq libxml2 \
+&& apk del .dd-build-deps
+
+COPY drupal-*.ini /usr/local/etc/php/conf.d/
+						</code></pre>
+						<aside class="notes">
+							Only instructions absolutely required to run service/container added to Dockerfile, apk cache emptied, php extensions limitted to those required by core and/or most popular distributions
+						</aside>
+					</section>
+				</section>
+				<!--Security-->
+				<section>
+					<section class="section">
+						<h1>Security</h1>
+					</section>
+					<section class="slide">
+						// Running container as root.
+					</section>
+					<section class="slide">
+						// Networks
+					</section>
+				</section>
+				<!--Performance/optimization-->
+				<section>
+					<section class="section">
+						<h1>Performance</h1>
+					</section>
+					<section>
+						// Multipurpose containers.
+					</section>
+					<section class="slide">
+						<h1>Layer caching</h1>
+						<h2>https://github.com/amazeeio/drupal-example</h2>
+						<pre><code>
+FROM amazeeio/php:7.2-cli-drupal
+
+COPY composer.json composer.lock /app/
+COPY scripts /app/scripts
+RUN composer install --no-dev
+COPY . /app
+
+# Define where the Drupal Root is located
+ENV WEBROOT=web
+						</code></pre>
+					</section>
+					<section>
+						<img src="drupal-europe/img/amazee-layer-caching.png" class="no-frame">
+					</section>
+				</section>
+				<section>
+					<section class="section">
+						<h1>Så: <strong>Can</strong> we think of infrastructure as of code?</h1>
+						<h2 class="fragment">My answer: YES!</h2>
+					</section>
+					<section class="section">
+						<h1>Så: <strong>Should</strong> we start thinking of infrastructure as of code!</h1>
+						<h2 class="fragment">My answer: DEFINITELY!</h2>
+						<h3 class="fragment">Starting now!</h3>
+					</section>
 				</section>
 			</div>
 		</div>

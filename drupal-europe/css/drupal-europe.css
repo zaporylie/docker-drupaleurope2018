@@ -118,6 +118,7 @@ body .reveal {
   border-image-width: 0 0 6px;
   border-image-slice: 100;
   border-style: solid;
+  font-size: 2.2em;
   font-family: "Nexa", "Open Sans", sans-serif;
 }
 .reveal div.slides section.title h2 { color: #b157c5; font-weight: 300; }
