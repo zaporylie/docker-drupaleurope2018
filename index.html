@@ -311,7 +311,44 @@
 						// Mind your dependencies
 					</section>
 					<section class="slide">
-						// Networks
+						<h1>Use networks</h1>
+						<img src="drupal-europe/img/flow-chart.png" class="no-frame">
+					</section>
+					<section class="slide">
+						<h1>Use networks</h1>
+						<img src="drupal-europe/img/flow-chart-networks.png" class="no-frame">
+					</section>
+					<section class="slide">
+						<h1>Use networks</h1>
+						<h2>docker-compose.yml</h2>
+						<pre><code data-trim data-noescape>
+							version: '3.5'
+							services:
+							  db:
+								<span class="highlight-grey">...</span>
+								networks:
+								  - back-tier
+							  php:
+								<span class="highlight-grey">...</span>
+								networks:
+								  - back-tier
+								  - front-tier
+							  web:
+								<span class="highlight-grey">...</span>
+								networks:
+								  - front-tier
+								  - reverse-proxy
+							  cli:
+								<span class="highlight-grey">...</span>
+								networks:
+								  - back-tier
+							networks:
+							  front-tier:
+							  back-tier:
+							  reverse-proxy:
+							    external:
+							      name: my-reverse-proxy
+						</code></pre>
 					</section>
 				</section>
 				<!--Performance/optimization-->
