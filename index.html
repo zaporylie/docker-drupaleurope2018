@@ -45,7 +45,7 @@
 					<h1>Modular software, modular infrastructure</h1>
 					<h2>Jakub Piasecki</h2>
 					<aside class="public-notes">https://zaporylie.github.io/docker-drupaleurope2018/</aside>
-					<aside class="notes">Speaker notes</aside>
+					<aside class="notes">Welcome</aside>
 				</section>
 				<!-- Speakers -->
 				<section>
@@ -60,7 +60,8 @@
 							<div class="role fragment">drupaldocker.org founder</div>
 						</div>
 						<aside class="notes">
-							Since march working for Linkfactory. Big thanks to Linkfactory for sponsoring my trip jere and opportunity
+							Since March this year working for Linkfactory.
+							Big thanks to Linkfactory for sponsoring my trip here and opportunity
 							to give this talk.
 							Been drupal-docker lead for last 3 years.
 							Been around Drupal for over 7 years.
@@ -73,10 +74,17 @@
 						<ul>
 							<li>Infrastructure as a code</li>
 							<li>Infrastructure's modularity</li>
-							<li>Best practices</li>
 							<li>Concerns</li>
+							<li>Best practices</li>
 							<li>Resources</li>
 						</ul>
+						<aside class="notes">
+							Let's start from the begining - what will we talk about.
+							Look on the infrastructure as of code. What it takes to make it modular - the same as your code.
+							Concerns people have when it comes to codified infrastructure.
+							Best practices that we all can look at.
+							List of resources one can follow.
+						</aside>
 					</section>
 					<section class="slide">
 						<h1>Glossary</h1>
@@ -95,6 +103,16 @@
 				<section>
 					<section class="slide">
 						<img src="drupal-europe/img/diagram.png" class="no-frame">
+						<aside class="notes">So this is example project. You can see Drupal application stack.
+							You can see more components than just Drupal - You can actually see PHP, DB, HTTP server,
+							maybe another project both behind same reverse proxy.</aside>
+					</section>
+					<section class="slide">
+						<ul>
+							<li class="fragment">What happens when we want to upgrade one of the components</li>
+							<li class="fragment">What happens when we require new components, such as solr or elasticsearch</li>
+							<li class="fragment">What happens when we must scale the application</li>
+						</ul>
 					</section>
 					<section class="quote">
 						<blockquote>Application heavily depends on the infrastructure, <span class="fragment">therefore
@@ -131,7 +149,7 @@
 						<aside class="notes">
 							For further divagation let's choose Docker. Oh, yet another time someone talks about Docker. That's boring.
 							I would like to try another approach on the way we look at Docker. Rather than say how to use Docker in
-							your project let's take step back and thing of Docker as a code - can we, as a developers, apply same rules/principles
+							your project let's take step back and think of Docker as of code - can we, as a developers, apply same rules/principles
 							we apply for our applications.
 						</aside>
 					</section>
