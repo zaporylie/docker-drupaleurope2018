@@ -74,14 +74,7 @@
 							<li>Infrastructure as a code</li>
 							<li>Infrastructure's modularity</li>
 							<li>Best practices</li>
-							<li>Brainstorming</li>
-						</ul>
-					</section>
-					<section class="slide">
-						<h1>What is this session NOT about</h1>
-						<ul>
-							<li>Giving simple recipes</li>
-							<li>Running Docker on production :)</li>
+							<li></li>
 						</ul>
 					</section>
 					<section class="slide">
@@ -331,7 +324,58 @@
 						</ul>
 					</section>
 					<section class="slide">
-						// Multipurpose containers.
+						<h1>Avoid multipurpose containers</h1>
+						<pre><code data-trim data-noescape>
+							FROM php:7.0-alpine
+							MAINTAINER drupal-docker
+
+							WORKDIR /var/www/html
+
+							RUN apk add --no-cache --virtual .dd-build-deps libpng-dev libjpeg-turbo-dev postgresql-dev libxml2-dev $PHPIZE_DEPS && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr && docker-php-ext-install gd mbstring pdo_mysql pdo_pgsql zip && docker-php-ext-install opcache bcmath soap && pecl install redis-3.1.1 && docker-php-ext-enable redis && apk add --no-cache sudo git libpng libjpeg libpq libxml2 mysql-client openssh-client rsync patch && apk del .dd-build-deps
+
+							<span class="fragment highlight-grey">RUN apk add --no-cache nodejs</span>
+
+							RUN curl -sS https://getcomposer.org/installer | php \
+							  && mv composer.phar /usr/local/bin/composer \
+							  && curl -L -o drush.phar https://github.com/drush-ops/drush-launcher/releases/download/0.4.2/drush.phar \
+							  && chmod +x drush.phar \
+							  && mv drush.phar /usr/local/bin/drush \
+							  && curl -L -o drupal.phar https://drupalconsole.com/installer \
+							  && chmod +x drupal.phar \
+							  && mv drupal.phar /usr/local/bin/drupal \
+							  && echo "export PATH=~/.composer/vendor/bin:\$PATH" >> ~/.bash_profile
+
+							COPY drupal-*.ini /usr/local/etc/php/conf.d/
+							COPY cli/drupal-*.ini /usr/local/etc/php/conf.d/
+						</code></pre>
+						<aside class="notes">
+
+						</aside>
+					</section>
+					<section class="slide">
+						<h1>Avoid multipurpose containers</h1>
+						<pre><code data-trim data-noescape>
+							FROM nodejs:8-alpine
+							MAINTAINER yourself
+
+							# Add some global extensions if needed
+						</code></pre>
+					</section>
+					<section class="slide">
+						<h1>Avoid multipurpose containers</h1>
+						<h2>docker-compose.yml</h2>
+						<pre><code data-trim data-noescape>
+							version: '3.5'
+							services:
+							  phpcli:
+								image: drupaldocker/php:7.1-cli-2.x
+								command: /bin/sh
+								...
+							  nodejs:
+								image: nodejs:8-alpine
+								command: cd web/themes/custom/mytheme && npm run-script watch
+								...
+						</code></pre>
 					</section>
 					<section class="slide">
 						<h1>Layer caching</h1>
@@ -350,6 +394,47 @@
 					</section>
 					<section>
 						<img src="drupal-europe/img/amazee-layer-caching.png" class="no-frame">
+					</section>
+					<section class="slide">
+						<h1>Multistage builds</h1>
+						<h2>php - cli</h2>
+						<pre><code data-trim data-noescape>
+							FROM amazeeio/php:7.2-cli-drupal
+
+							COPY composer.json composer.lock /app/
+							COPY scripts /app/scripts
+							RUN composer install --no-dev
+							COPY . /app
+
+							# Define where the Drupal Root is located
+							ENV WEBROOT=web
+						</code></pre>
+					</section>
+					<section class="slide">
+						<h1>Multistage builds</h1>
+						<h2>php - fpm</h2>
+						<pre><code data-trim data-noescape>
+							FROM amazeeio/php:7.2-<span class="fragment highlight-red">fpm</span>
+
+							COPY composer.json composer.lock /app/
+							COPY scripts /app/scripts
+							<span class="fragment highlight-red">RUN composer install --no-dev</span>
+							COPY . /app
+
+							# Define where the Drupal Root is located
+							ENV WEBROOT=web
+						</code></pre>
+					</section>
+					<section class="slide">
+						<h1>Multistage builds</h1>
+						<h2>php - fpm</h2>
+						<pre><code data-trim data-noescape>
+							FROM cli_image_we_just_built as <span class="fragment highlight-red">cli</span>
+
+							FROM <span class="fragment highlight-blue">amazeeio/php:7.2-fpm</span>
+
+							COPY --from=<span class="fragment highlight-red">cli</span> <span class="fragment highlight-red">/app</span> <span class="fragment highlight-blue">/app</span>
+						</code></pre>
 					</section>
 				</section>
 				<section>
