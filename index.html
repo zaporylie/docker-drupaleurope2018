@@ -74,7 +74,8 @@
 							<li>Infrastructure as a code</li>
 							<li>Infrastructure's modularity</li>
 							<li>Best practices</li>
-							<li></li>
+							<li>Concerns</li>
+							<li>Resources</li>
 						</ul>
 					</section>
 					<section class="slide">
@@ -302,13 +303,33 @@
 						</ul>
 					</section>
 					<section class="slide">
-						// Running container as root.
+						<h1>Elevated privileges</h1>
+						<ul>
+							<li>Processes in containers should not run as root</li>
+							<li class="fragment">Only trusted users should be allowed to control your Docker daemon</li>
+							<li class="fragment">Don't mount docker.sock to untrusted image</li>
+						</ul>
 					</section>
 					<section class="slide">
-						// Mind your images
+						<h1>Mind your images</h1>
+						<ul>
+							<li>Tainted, cryptomining images</li>
+							<li class="fragment">Use official Docker images</li>
+							<li class="fragment">Use images provided by hosting company</li>
+							<li class="fragment">Use images provided by the comunity</li>
+							<li class="fragment">Use images where you can reverse-engineer build process</li>
+						</ul>
+						<aside class="notes">Security companies Fortinet and Kromtech found seventeen tainted Docker containers that were essentially downloadable images containing programs that had been designed to mine cryptocurrencies. Further investigation found that they had been downloaded 5 million times, suggesting that hackers were able to inject commands into insecure containers to download this code into otherwise healthy web applications. The researchers found the containers on Docker Hub, a repository for user images.</aside>
 					</section>
 					<section class="slide">
-						// Mind your dependencies
+						<h1>Mind image versions</h1>
+						<ul>
+							<li>Docker images are (not) versionable</li>
+							<li class="fragment">Most users use default tag: <code>:latest</code></li>
+							<li class="fragment">Lack of <em>semantic versioning</em> slows down innovation</li>
+							<li class="fragment">As a image creator: decide on tagging convention</li>
+							<li class="fragment">As a image consumer: never use non-tagged/<code>:latest</code> images</li>
+						</ul>
 					</section>
 					<section class="slide">
 						<h1>Use networks</h1>
@@ -317,6 +338,7 @@
 					<section class="slide">
 						<h1>Use networks</h1>
 						<img src="drupal-europe/img/flow-chart-networks.png" class="no-frame">
+						<aside class="notes">Separation of concerns</aside>
 					</section>
 					<section class="slide">
 						<h1>Use networks</h1>
