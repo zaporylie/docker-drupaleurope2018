@@ -142,30 +142,44 @@
 						</aside>
 					</section>
 				</section>
-				<section class="slide">
-					<h1>Dockerfile</h1>
-					<pre><code data-trim data-noescape>
-FROM php:7.0-fpm-alpine
-MAINTAINER drupal-docker
+				<section>
+					<section class="slide">
+						<h1>Dockerfile</h1>
+						<pre><code data-trim data-noescape>
+							<span class="fragment highlight-red">FROM</span> php:7.0-fpm-alpine
+							<span class="fragment highlight-red">MAINTAINER</span> drupal-docker
 
-RUN apk add --no-cache --virtual .dd-build-deps libpng-dev libjpeg-turbo-dev postgresql-dev libxml2-dev $PHPIZE_DEPS \
-	&& docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
-	&& docker-php-ext-install gd mbstring pdo_mysql pdo_pgsql zip \
-	&& docker-php-ext-install opcache bcmath soap \
-	&& pecl install redis-3.1.1 \
-	&& docker-php-ext-enable redis \
-	&& apk add --no-cache libpng libjpeg libpq libxml2 \
-	&& apk del .dd-build-deps
+							<span class="fragment highlight-red">RUN</span> apk add --no-cache --virtual .dd-build-deps libpng-dev libjpeg-turbo-dev postgresql-dev libxml2-dev $PHPIZE_DEPS \
+								&& docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
+								&& docker-php-ext-install gd mbstring pdo_mysql pdo_pgsql zip \
+								&& docker-php-ext-install opcache bcmath soap \
+								&& pecl install redis-3.1.1 \
+								&& docker-php-ext-enable redis \
+								&& apk add --no-cache libpng libjpeg libpq libxml2 \
+								&& apk del .dd-build-deps
 
-COPY drupal-*.ini /usr/local/etc/php/conf.d/
-					</code></pre>
-					<aside class="notes">
-						It does look like code, doesn't it? It has Instructions, some very common linux commands, it even can be
-						compiled (docker build ...).
-					</aside>
+							<span class="fragment highlight-red">COPY</span> drupal-*.ini /usr/local/etc/php/conf.d/
+						</code></pre>
+						<aside class="notes">
+							It does look like code, doesn't it? It has Instructions, some very common linux commands, it even can be
+							compiled (docker build ...).
+						</aside>
+					</section>
+					<section class="slide">
+						<img src="drupal-europe/img/drupaldocker.png" class="no-frame"><br>
+						<a href="https://drupaldocker.org">https://drupaldocker.org</a><br>
+						<a href="https://drupaldocker.org">https://github.com/drupal-docker</a>
+					</section>
 				</section>
 				<!--Principles-->
 				<section>
+					<section class="quote">
+						<ul>
+							<li class="highlight">Architecture</li>
+							<li>Security</li>
+							<li>Performance</li>
+						</ul>
+					</section>
 					<section class="section">
 						<h1>Does Docker follow programming principles?</h1>
 						<h2 class="fragment">Let's find out together</h2>
@@ -182,19 +196,19 @@ COPY drupal-*.ini /usr/local/etc/php/conf.d/
 						<h1>DRY</h1>
 						<h2>Dockerfile</h2>
 						<pre><code data-trim data-noescape>
-FROM php:7.0-fpm-alpine
-MAINTAINER drupal-docker
+							<span class="fragment highlight-red">FROM</span> php:7.0-fpm-alpine
+							MAINTAINER drupal-docker
 
-RUN apk add --no-cache --virtual .dd-build-deps libpng-dev libjpeg-turbo-dev postgresql-dev libxml2-dev $PHPIZE_DEPS \
-	&& docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
-	&& docker-php-ext-install gd mbstring pdo_mysql pdo_pgsql zip \
-	&& docker-php-ext-install opcache bcmath soap \
-	&& pecl install redis-3.1.1 \
-	&& docker-php-ext-enable redis \
-	&& apk add --no-cache libpng libjpeg libpq libxml2 \
-	&& apk del .dd-build-deps
+							RUN apk add --no-cache --virtual .dd-build-deps libpng-dev libjpeg-turbo-dev postgresql-dev libxml2-dev $PHPIZE_DEPS \
+								&& docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
+								&& docker-php-ext-install gd mbstring pdo_mysql pdo_pgsql zip \
+								&& docker-php-ext-install opcache bcmath soap \
+								&& pecl install redis-3.1.1 \
+								&& docker-php-ext-enable redis \
+								&& apk add --no-cache libpng libjpeg libpq libxml2 \
+								&& apk del .dd-build-deps
 
-COPY drupal-*.ini /usr/local/etc/php/conf.d/
+							<span class="fragment highlight-red">COPY</span> drupal-*.ini /usr/local/etc/php/conf.d/
             			</code></pre>
 						<aside class="notes">
 							How Docker can be DRY-compatible? FROM - Inheritance, ADD/COPY - Composition
@@ -208,15 +222,15 @@ COPY drupal-*.ini /usr/local/etc/php/conf.d/
 						<h1>KISS</h1>
 						<h2>Dockerfile</h2>
 						<pre><code data-trim data-noescape>
-FROM drupaldocker/php:7.0-fpm-2.x
-MAINTAINER drupal-docker
+							FROM drupaldocker/php:7.0-fpm-2.x
+							<span class="fragment highlight-grey">MAINTAINER drupal-docker</span>
 
-RUN apk add --no-cache --virtual .dd-build-deps $PHPIZE_DEPS \
-&& pecl install xdebug-2.6.0beta1 \
-&& docker-php-ext-enable xdebug \
-&& apk del .dd-build-deps
+							RUN <span class="fragment highlight-grey">apk add --no-cache --virtual .dd-build-deps $PHPIZE_DEPS \</span>
+							 && pecl install xdebug-2.6.0beta1 \
+							 && docker-php-ext-enable xdebug \
+							  <span class="fragment highlight-grey">&& apk del .dd-build-deps</span>
 
-COPY drupal-*.ini /usr/local/etc/php/conf.d/
+							COPY drupal-*.ini /usr/local/etc/php/conf.d/
             			</code></pre>
 						<aside class="notes">
 							just 7 lines 4 instructions 3 effective instructions easy ro read and write
@@ -230,19 +244,55 @@ COPY drupal-*.ini /usr/local/etc/php/conf.d/
 						<h1>YAGNI</h1>
 						<h2>Dockerfile</h2>
 						<pre><code data-trim data-noescape>
-FROM php:7.0-fpm-alpine
-MAINTAINER drupal-docker
+							FROM php:7.0-alpine
+							MAINTAINER drupal-docker
 
-RUN apk add --no-cache --virtual .dd-build-deps libpng-dev libjpeg-turbo-dev postgresql-dev libxml2-dev $PHPIZE_DEPS \
-&& docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
-&& docker-php-ext-install gd mbstring pdo_mysql pdo_pgsql zip \
-&& docker-php-ext-install opcache bcmath soap \
-&& pecl install redis-3.1.1 \
-&& docker-php-ext-enable redis \
-&& apk add --no-cache libpng libjpeg libpq libxml2 \
-&& apk del .dd-build-deps
+							WORKDIR /var/www/html
 
-COPY drupal-*.ini /usr/local/etc/php/conf.d/
+							RUN apk add --no-cache --virtual .dd-build-deps libpng-dev libjpeg-turbo-dev postgresql-dev libxml2-dev $PHPIZE_DEPS \
+							  && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
+							  && docker-php-ext-install gd mbstring pdo_mysql pdo_pgsql zip \
+							  && docker-php-ext-install opcache bcmath soap \
+							  && pecl install redis-3.1.1 \
+							  && docker-php-ext-enable redis \
+							  <span class="fragment highlight-grey">&& curl -sS https://getcomposer.org/installer | php \
+							  && mv composer.phar /usr/local/bin/composer \
+							  && curl -L -o drush.phar https://github.com/drush-ops/drush-launcher/releases/download/0.4.2/drush.phar \
+							  && chmod +x drush.phar \
+							  && mv drush.phar /usr/local/bin/drush \
+							  && curl -L -o drupal.phar https://drupalconsole.com/installer \
+							  && chmod +x drupal.phar \
+							  && mv drupal.phar /usr/local/bin/drupal \
+							  && echo "export PATH=~/.composer/vendor/bin:\$PATH" >> ~/.bash_profile \</span>
+							  && apk add --no-cache sudo git libpng libjpeg libpq libxml2 <span class="fragment highlight-grey">mysql-client openssh-client rsync patch</span> \
+							  && apk del .dd-build-deps
+
+							COPY drupal-*.ini /usr/local/etc/php/conf.d/
+							<span class="fragment highlight-grey">COPY cli/drupal-*.ini /usr/local/etc/php/conf.d/</span>
+						</code></pre>
+						<aside class="notes">
+							Only instructions absolutely required to run service/container added to Dockerfile, apk cache emptied, php extensions limitted to those required by core and/or most popular distributions
+							Do we need redis?
+							Do we need composer?
+						</aside>
+					</section>
+					<section class="slide">
+						<h1>YAGNI</h1>
+						<h2>Dockerfile</h2>
+						<pre><code data-trim data-noescape>
+							FROM php:7.0-fpm-alpine
+							MAINTAINER drupal-docker
+
+							RUN apk add --no-cache --virtual .dd-build-deps libpng-dev libjpeg-turbo-dev postgresql-dev libxml2-dev $PHPIZE_DEPS \
+							 && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
+							 && docker-php-ext-install gd mbstring pdo_mysql pdo_pgsql zip \
+							 && docker-php-ext-install opcache bcmath soap \
+							 && pecl install redis-3.1.1 \
+							 && docker-php-ext-enable redis \
+							 && apk add --no-cache libpng libjpeg libpq libxml2 \
+							 && apk del .dd-build-deps
+
+							COPY drupal-*.ini /usr/local/etc/php/conf.d/
 						</code></pre>
 						<aside class="notes">
 							Only instructions absolutely required to run service/container added to Dockerfile, apk cache emptied, php extensions limitted to those required by core and/or most popular distributions
@@ -251,11 +301,21 @@ COPY drupal-*.ini /usr/local/etc/php/conf.d/
 				</section>
 				<!--Security-->
 				<section>
-					<section class="section">
-						<h1>Security</h1>
+					<section class="quote">
+						<ul>
+							<li>Architecture</li>
+							<li class="highlight">Security</li>
+							<li>Performance</li>
+						</ul>
 					</section>
 					<section class="slide">
 						// Running container as root.
+					</section>
+					<section class="slide">
+						// Mind your images
+					</section>
+					<section class="slide">
+						// Mind your dependencies
 					</section>
 					<section class="slide">
 						// Networks
@@ -263,25 +323,29 @@ COPY drupal-*.ini /usr/local/etc/php/conf.d/
 				</section>
 				<!--Performance/optimization-->
 				<section>
-					<section class="section">
-						<h1>Performance</h1>
+					<section class="quote">
+						<ul>
+							<li>Architecture</li>
+							<li>Security</li>
+							<li class="highlight">Performance</li>
+						</ul>
 					</section>
-					<section>
+					<section class="slide">
 						// Multipurpose containers.
 					</section>
 					<section class="slide">
 						<h1>Layer caching</h1>
 						<h2>https://github.com/amazeeio/drupal-example</h2>
-						<pre><code>
-FROM amazeeio/php:7.2-cli-drupal
+						<pre><code data-trim data-noescape>
+							FROM amazeeio/php:7.2-cli-drupal
 
-COPY composer.json composer.lock /app/
-COPY scripts /app/scripts
-RUN composer install --no-dev
-COPY . /app
+							<span class="fragment highlight-red">COPY composer.json composer.lock /app/</span>
+							COPY scripts /app/scripts
+							RUN composer install --no-dev
+							COPY . /app
 
-# Define where the Drupal Root is located
-ENV WEBROOT=web
+							# Define where the Drupal Root is located
+							ENV WEBROOT=web
 						</code></pre>
 					</section>
 					<section>
@@ -291,12 +355,37 @@ ENV WEBROOT=web
 				<section>
 					<section class="section">
 						<h1>Så: <strong>Can</strong> we think of infrastructure as of code?</h1>
-						<h2 class="fragment">My answer: YES!</h2>
+						<h2 class="fragment">YES!</h2>
 					</section>
 					<section class="section">
 						<h1>Så: <strong>Should</strong> we start thinking of infrastructure as of code!</h1>
-						<h2 class="fragment">My answer: DEFINITELY!</h2>
-						<h3 class="fragment">Starting now!</h3>
+						<h2 class="fragment">DEFINITELY!</h2>
+					</section>
+				</section>
+				<section>
+					<section class="section">
+						<h1>Where to start?</h1>
+					</section>
+					<section class="quote" data-transition="slide-in fade-out">
+						<blockquote>Nanos gigantum humeris insidentes</blockquote>
+						<small class="author">Bernard of Chartres</small>
+					</section>
+					<section class="quote" data-transition="fade-in slide-out">
+						<blockquote>Standing on the shoulders of giants</blockquote>
+						<small class="author">Bernard of Chartres</small>
+					</section>
+					<section class="slide">
+						<h1>Knowledge base</h1>
+						<img src="drupal-europe/img/sponsors/ddev.png" class="no-frame small-logo">
+						<img src="drupal-europe/img/amazeeio_with_text.png" class="no-frame small-logo">
+						<img src="drupal-europe/img/wodby.png" class="no-frame small-logo">
+						<img src="drupal-europe/img/docksal.png" class="no-frame small-logo">
+						<img src="drupal-europe/img/lando.png" class="no-frame small-logo">
+					</section>
+					<section class="slide">
+						<img src="drupal-europe/img/drupaldocker.png" class="no-frame"><br>
+						<a href="https://drupaldocker.org">https://drupaldocker.org</a><br>
+						<a href="https://drupaldocker.org">https://github.com/drupal-docker</a>
 					</section>
 				</section>
 			</div>

@@ -183,6 +183,9 @@ body .reveal {
 .reveal div.slides section.quote blockquote:after { font-family: serif; position: absolute; bottom: 0; right: 0; content:'\201D'; font-size: 1.5em; line-height: 1em; }
 .reveal div.slides section.quote small.author { font-size: 1em; margin-left: 2rem; }
 
+.reveal div.slides section.quote ul li { color: rgba(255,255,255,.4);}
+.reveal div.slides section.quote ul li.highlight { color: rgba(255,255,255,1);}
+
 .reveal div.slides section.slide {}
 .reveal div.slides section.slide:before {
   float: right;
@@ -202,8 +205,16 @@ body .reveal {
 .reveal div.slides section.slide h2 { font-size: 1.5rem; color: #b157c5; }
 
 .reveal img.no-frame { border: none; background: none; box-shadow: none; }
+.reveal img.small-logo { max-height: 30%; max-width: 30%; height: auto; width: auto; }
 .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
   text-transform: none;
   font-family: "Open Sans", sans-serif;
 }
 
+.reveal ul, .reveal ol {}
+.reveal ul li, .reveal ol li { margin-bottom: .4em; }
+
+
+.reveal .slides section .fragment.highlight-grey { opacity: 1; visibility: inherit; }
+.reveal .slides section .fragment.highlight-grey.visible *,
+.reveal .slides section .fragment.highlight-grey.visible { color: #666666 !important; }
