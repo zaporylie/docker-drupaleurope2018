@@ -132,7 +132,7 @@
 						</aside>
 					</section>
 					<section class="slide">
-						<h1>What can you use?</h1>
+						<h1>If there's only a tool...</h1>
 						<ul>
 							<li class="fragment">Vagrantfile</li>
 							<li class="fragment">Ansible</li>
@@ -179,8 +179,8 @@
 					</section>
 					<section class="slide">
 						<img src="drupal-europe/img/drupaldocker.png" class="no-frame"><br>
-						<a href="https://drupaldocker.org">https://drupaldocker.org</a><br>
-						<a href="https://drupaldocker.org">https://github.com/drupal-docker</a>
+						<a href="http://drupaldocker.org">http://drupaldocker.org</a><br>
+						<a href="https://github.com/drupal-docker">https://github.com/drupal-docker</a>
 					</section>
 				</section>
 				<!--Principles-->
@@ -292,7 +292,7 @@
 						<h1>YAGNI</h1>
 						<h2>Dockerfile</h2>
 						<pre><code data-trim data-noescape>
-							FROM php:7.0-fpm-alpine
+							FROM php:7.0-<span class="highlight-red">fpm</span>-alpine
 							MAINTAINER drupal-docker
 
 							RUN apk add --no-cache --virtual .dd-build-deps libpng-dev libjpeg-turbo-dev postgresql-dev libxml2-dev $PHPIZE_DEPS \
@@ -308,6 +308,7 @@
 						</code></pre>
 						<aside class="notes">
 							Only instructions absolutely required to run service/container added to Dockerfile, apk cache emptied, php extensions limitted to those required by core and/or most popular distributions
+							Alpine
 						</aside>
 					</section>
 				</section>
@@ -337,21 +338,38 @@
 							<li class="fragment">Use images provided by the comunity</li>
 							<li class="fragment">Use images where you can reverse-engineer build process</li>
 						</ul>
-						<aside class="notes">Security companies Fortinet and Kromtech found seventeen tainted Docker containers that were essentially downloadable images containing programs that had been designed to mine cryptocurrencies. Further investigation found that they had been downloaded 5 million times, suggesting that hackers were able to inject commands into insecure containers to download this code into otherwise healthy web applications. The researchers found the containers on Docker Hub, a repository for user images.</aside>
+						<aside class="notes">Security companies Fortinet and Kromtech found seventeen tainted Docker
+							containers that were essentially downloadable images containing programs that had
+							been designed to mine cryptocurrencies. Further investigation found that they had
+							been downloaded 5 million times, suggesting that hackers were able to inject commands
+							into insecure containers to download this code into otherwise healthy web applications.
+							The researchers found the containers on Docker Hub, a repository for user images.</aside>
+					</section>
+					<section class="section">
+						<h1><span class="fragment">vendor</span>/<span class="fragment">name</span>:<span class="fragment">tag</span></h1>
+						<h2 class="fragment">drupaldocker/php:7.x-cli-2.x</h2>
+						<aside class="public-notes fragment">https://hub.docker.com/r/drupaldocker/php/</aside>
 					</section>
 					<section class="slide">
 						<h1>Mind image versions</h1>
 						<ul>
-							<li>Docker images are (not) versionable</li>
+							<li>Docker images are <span class="fragment">(not)</span> versionable</li>
 							<li class="fragment">Most users use default tag: <code>:latest</code></li>
 							<li class="fragment">Lack of <em>semantic versioning</em> slows down innovation</li>
 							<li class="fragment">As a image creator: decide on tagging convention</li>
 							<li class="fragment">As a image consumer: never use non-tagged/<code>:latest</code> images</li>
 						</ul>
+						<aside class="notes">
+							We mentioned before we have tags, but tags != versions
+						</aside>
 					</section>
 					<section class="slide">
 						<h1>Use networks</h1>
 						<img src="drupal-europe/img/flow-chart.png" class="no-frame">
+						<aside class="notes">
+							Ok, look at this flow chart. You can see two requests: one for static file and one for some
+							example dynamic page. Definitely there's some interconnectivity.
+						</aside>
 					</section>
 					<section class="slide">
 						<h1>Use networks</h1>
@@ -426,7 +444,9 @@
 							COPY cli/drupal-*.ini /usr/local/etc/php/conf.d/
 						</code></pre>
 						<aside class="notes">
-
+							Again - separation of concerns but also performance overhead.
+							Let's say you must compile sass to css. You need compass or nodejs.
+							You can take out nodejs part and...
 						</aside>
 					</section>
 					<section class="slide">
@@ -453,6 +473,10 @@
 								command: cd web/themes/custom/mytheme && npm run-script watch
 								...
 						</code></pre>
+						<aside class="notes">
+							Define multiple services - there is really almost no overhead. Each service corresponds to
+							one or many containers.
+						</aside>
 					</section>
 					<section class="slide">
 						<h1>Layer caching</h1>
@@ -468,6 +492,10 @@
 							# Define where the Drupal Root is located
 							ENV WEBROOT=web
 						</code></pre>
+						<aside class="section">
+							Example from one of the amazing vendors coming from Drupal universe.
+							Here we have an example were application is packed to image (.
+						</aside>
 					</section>
 					<section>
 						<img src="drupal-europe/img/amazee-layer-caching.png" class="no-frame">
@@ -546,9 +574,20 @@
 					</section>
 					<section class="slide">
 						<img src="drupal-europe/img/drupaldocker.png" class="no-frame"><br>
-						<a href="https://drupaldocker.org">https://drupaldocker.org</a><br>
-						<a href="https://drupaldocker.org">https://github.com/drupal-docker</a>
+						<a href="http://drupaldocker.org">http://drupaldocker.org</a><br>
+						<a href="https://github.com/drupal-docker">https://github.com/drupal-docker</a>
 					</section>
+				</section>
+				<section class="slide">
+					<h1>Summary</h1>
+					<h2>If you have to take only 5 things from this session</h2>
+					<ul>
+						<li>Think inheritance & composition</li>
+						<li>Think vendor credibility</li>
+						<li>Think image size</li>
+						<li>Think layers</li>
+						<li>Never use <code>:latest</code></li>
+					</ul>
 				</section>
 			</div>
 		</div>
